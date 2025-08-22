@@ -32,7 +32,7 @@ I'm a passionate computer vision developer with hands-on experience in designing
   _Classic and modern machine learning algorithms implemented from scratch._
 
 - [GnomieLibrary](https://github.com/kshashankrao/GnomieLibrary)  
-  _A personal C++ library for vision and ML research._
+  _A personal python library for vision and ML research._
 
 - [Point-Cloud-Segmentation-and-Classification](https://github.com/kshashankrao/Point-Cloud-Segmentation-and-Classification)  
   _Techniques for segmenting, classifying, and visualizing 3D point clouds._
