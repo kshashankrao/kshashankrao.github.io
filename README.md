@@ -12,7 +12,7 @@
 
 I'm a passionate computer vision developer with hands-on experience in designing and deploying ML based vision systems. My work spans from building real-world 3D applications for Advanced Driver-Assistance Systems at Denso.
 
-- 🏆 **Winner:** First Lego League, India Robotic Competition & Represented India at the World FLL Festival
+- 🏆 **Winner:** First Lego League, India Robotic Competition & Represented India at the World FLL Festival (2010)
 - 🎓 **Certification:** Diffusion Models (Udemy)
 - 🔬 **Research Interests:** Leveraging computer vision for autonomous systems
 
