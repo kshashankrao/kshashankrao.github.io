@@ -28,6 +28,9 @@ I'm a passionate computer vision developer with hands-on experience in designing
 
 ## 🛠️ Favorite Projects
 
+- [Implementation-of-Deep-Unsupervised-Learning-using-Nonequilibrium-Thermodynamics](https://github.com/kshashankrao/Implementation-of-Deep-Unsupervised-Learning-using-Nonequilibrium-Thermodynamics)  
+  _A PyTorch implementation of a diffusion-based generative model for unsupervised learning, inspired by concepts from nonequilibrium thermodynamics._
+  
 - [Ml-Algorithms](https://github.com/kshashankrao/Ml-Algorithms)  
   _Classic and modern machine learning algorithms implemented from scratch._
 
