@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shashank Rao // Computer Vision & Deep Learning Engineer</title>
+  <meta name="description"
+    content="Portfolio and Technical Hub of Shashank Rao - Computer Vision Developer, Autonomous Driving Systems (ADAS) Engineer, and Deep Learning Enthusiast.">
+
+  <!-- Favicon / Icon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Highlight.js for C++ / PyTorch Syntax Highlighting -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark-reasonable.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+
+  <!-- Marked.js for Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+
+  <!-- Custom Styles System -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Interactive LiDAR / Neural Network Canvas Background -->
+  <div id="canvas-container"></div>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-container">
+
+    <!-- Recruiter Fast-Track Header -->
+    <header class="site-header">
+      <ul class="nav-links">
+        <li class="nav-item active" data-view="home">Home</li>
+        <li class="nav-item" data-view="blog">Technical Hub</li>
+        <li><a class="nav-link-ext" href="https://github.com/kshashankrao" target="_blank">GitHub</a></li>
+        <li class="nav-item" data-view="about">Experience / CV</li>
+      </ul>
+
+      <div class="recruiter-badge">
+        <span class="pulse-dot"></span>
+        <span>Open to Senior CV / ML Roles</span>
+      </div>
+    </header>
+
+    <!-- SECTION 1: HOME -->
+    <section id="view-home" class="view-section active-view">
+      <div class="hero">
+        <span class="hero-tag">⚡ Robotic Perception & Machine Learning</span>
+        <h1 class="hero-title">
+          <span class="gradient-text">3D Vision</span> is essentially Applied Linear Algebra .
+        </h1>
+        <p class="hero-tagline">
+          Specializing in real-world 3D LiDAR/Camera applications for Advanced Driver-Assistance Systems (ADAS).
+        </p>
+
+      </div>
+
+      <!-- Recent Technical Spotlight -->
+      <div style="margin-top: 5rem;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Latest Technical Articles</h2>
+            <p class="section-subtitle">Exploring software experiments, algorithms, and systems engineering in C++ and
+              Python.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="window.location.hash='blog'"
+            style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+            View All Articles →
+          </button>
+        </div>
+        <div id="home-recent-blogs" class="blog-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: TECHNICAL HUB & BLOG -->
+    <section id="view-blog" class="view-section">
+      <div class="section-header">
+        <div>
+          <h1 class="section-title">Technical Hub</h1>
+          <p class="section-subtitle">Structured technical articles, algorithms from scratch, and software experiments
+            in C++ and Python.</p>
+        </div>
+      </div>
+
+      <!-- Tag Filtering Bar -->
+      <div id="blog-grid-container">
+        <div class="tag-filters" style="margin-bottom: 2.5rem;">
+          <button class="filter-pill active" data-filter="All">All Topics</button>
+          <button class="filter-pill" data-filter="3D">#3D Vision</button>
+          <button class="filter-pill" data-filter="Math">#Linear Algebra</button>
+          <button class="filter-pill" data-filter="Algorithms">#Algorithms</button>
+          <button class="filter-pill" data-filter="Python">#Python</button>
+          <button class="filter-pill" data-filter="C++">#C++</button>
+        </div>
+
+        <!-- Blog Cards Grid -->
+        <div id="blog-cards-grid" class="blog-grid">
+          <!-- Populated dynamically from blogs/blogs.json -->
+        </div>
+      </div>
+
+      <!-- Article Reader Modal / Full View -->
+      <div id="article-reader" class="article-reader">
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <button id="back-to-blogs-btn" class="back-btn">
+            <span>← Back to all articles</span>
+          </button>
+          <div id="article-actions" style="display: flex; gap: 0.75rem;">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </div>
+
+        <div id="article-content" class="markdown-content">
+          <!-- Markdown, KaTeX math, and Highlight.js code populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ABOUT ME & TIMELINE -->
+    <section id="view-about" class="view-section">
+      <div class="section-header">
+        <div>
+          <h1 class="section-title">About Me & Engineering Timeline</h1>
+          <p class="section-subtitle">Passionate computer vision developer with hands-on experience designing and
+            deploying autonomous systems.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; align-items: start;">
+        <div>
+          <h3
+            style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-cyan);">
+            🚀 Career & Achievements</h3>
+
+          <div class="timeline">
+            <!-- Chery Europe -->
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></div>
+              <div class="timeline-date">Feb 2026 - Present // Raunheim, Germany</div>
+              <h4 class="timeline-role">ADAS System Engineer</h4>
+              <p class="timeline-org">Chery Europe</p>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Developed an automated vehicle data recording and synchronization tool to capture CAN signals, video streams, and measurements from multiple devices for ADAS and powertrain validation and verification.
+              </p>
+            </div>
+
+            <!-- Denso ADAS -->
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background: var(--accent-indigo); box-shadow: 0 0 10px var(--accent-indigo);"></div>
+              <div class="timeline-date">Oct 2019 - Mar 2025 // Lindau, Germany</div>
+              <h4 class="timeline-role">Computer Vision Engineer</h4>
+              <p class="timeline-org">Denso ADAS</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 0.75rem;">
+                <div>
+                  <h5 style="color: #22d3ee; font-size: 0.95rem; margin-bottom: 0.4rem; font-weight: 600;">🔹 Semantic Occupancy Mapping for Urban Driving:</h5>
+                  <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; line-height: 1.5;">
+                    <li>Implemented hierarchical and semantic loss functions to capture local consistency signals for improved monocular 3D reconstruction of thin objects like traffic signs.</li>
+                    <li>Developed a multi-task shared backbone deep learning network for depth estimation and semantic segmentation by integrating a cross-decoder feature sharing module.</li>
+                    <li>Designed a real-time binary segmentation network for close-range elevated obstacle detection by using inverse perspective mapping to identify structure distortions against flat ground.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h5 style="color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem; font-weight: 600;">🔹 Monocular 3D Object Detection:</h5>
+                  <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; line-height: 1.5;">
+                    <li>Designed and developed an efficient, camera-agnostic deep learning algorithm to accurately estimate 3D characteristics of surrounding vehicles to avoid collisions, achieving a <strong style="color: #fff;">25% increase in recall</strong> over baseline.</li>
+                    <li>Optimized the model using TensorRT to run on Nvidia Jetson by applying quantization and pruning, achieving a <strong style="color: #fff;">128% runtime improvement</strong>.</li>
+                    <li>Managed the entire point cloud labeling activity by defining data requirements and collaborated with internal teams to deploy algorithms on vehicles using ROS2 in C++.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h5 style="color: #34d399; font-size: 0.95rem; margin-bottom: 0.4rem; font-weight: 600;">🔹 Parking Slot Detection & MLOps:</h5>
+                  <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; line-height: 1.5;">
+                    <li>Designed and implemented a real-time method using occupancy grid maps with a <strong style="color: #fff;">95% true positive rate</strong>.</li>
+                    <li>Developed a gradient-based clustering approach leveraging fisheye images for a major Japanese OEM.</li>
+                    <li>Implemented MLOps best practices by establishing data serving libraries and developing standardized Docker environments.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- ESIGELEC Intern -->
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background: var(--accent-emerald); box-shadow: 0 0 10px var(--accent-emerald);"></div>
+              <div class="timeline-date">Mar 2019 - Sept 2019 // Rouen, France</div>
+              <h4 class="timeline-role">Computer Vision Intern</h4>
+              <p class="timeline-org">ESIGELEC</p>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Designed and implemented an LSTM model for spatio-temporal analysis to classify eye blink events from sequential data. Developed a deep learning facial landmark regression model to analyze wheelchair usage patterns and detect user fatigue.
+              </p>
+            </div>
+
+            <!-- Uncanny Vision Intern -->
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background: #f43f5e; box-shadow: 0 0 10px #f43f5e;"></div>
+              <div class="timeline-date">Aug 2017 - Dec 2017 // Bengaluru, India</div>
+              <h4 class="timeline-role">Computer Vision Intern</h4>
+              <p class="timeline-org">Uncanny Vision</p>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Automated the machine learning retraining pipeline for a meter reading model, including labeling tools, data augmentation pipelines, and processing for digital and analog meter detection.
+              </p>
+            </div>
+
+            <!-- Education -->
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background: #eab308; box-shadow: 0 0 10px #eab308;"></div>
+              <div class="timeline-date">2018 - 2019 // Rouen, France</div>
+              <h4 class="timeline-role">Masters in Electronic Embedded Systems</h4>
+              <p class="timeline-org">ESIGELEC</p>
+            </div>
+
+            <!-- Bachelors -->
+            <div class="timeline-item" style="margin-bottom: 0;">
+              <div class="timeline-dot" style="background: #38bdf8; box-shadow: 0 0 10px #38bdf8;"></div>
+              <div class="timeline-date">2013 - 2017 // Bengaluru, India</div>
+              <h4 class="timeline-role">Bachelors of Engineering in ECE</h4>
+              <p class="timeline-org">Visvesvaraya Technological University</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Matrix -->
+        <div
+          style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(16px); display: flex; flex-direction: column; gap: 1.5rem;">
+          <h3
+            style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0; color: var(--accent-emerald);">
+            🛠️ Technical Specialties</h3>
+
+          <div>
+            <h4
+              style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem;">
+              Programming Languages</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(16,185,129,0.15); color: #34d399; border-color: rgba(16,185,129,0.3);">C++</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(16,185,129,0.15); color: #34d399; border-color: rgba(16,185,129,0.3);">C</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(16,185,129,0.15); color: #34d399; border-color: rgba(16,185,129,0.3);">Python</span>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem;">
+              Machine Learning Libraries</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">PyTorch</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">TensorRT</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">TensorFlow</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Keras</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Caffe</span>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem;">
+              Computer Vision & Robotics</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(6,182,212,0.15); color: #22d3ee; border-color: rgba(6,182,212,0.3);">OpenCV</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(6,182,212,0.15); color: #22d3ee; border-color: rgba(6,182,212,0.3);">PCL</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(6,182,212,0.15); color: #22d3ee; border-color: rgba(6,182,212,0.3);">ROS2</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">NumPy</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">OpenGL</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">PIL</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Matplotlib</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Pandas</span>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem;">
+              MLOps & DevOps</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Git</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Docker</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">CMake</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Kubernetes</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Linux</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">WandB</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">AWS S3</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">MLflow</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">FastAPI</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Streamlit</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">GStreamer</span>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem;">
+              Core Concepts</h4>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(168,85,247,0.15); color: #c084fc; border-color: rgba(168,85,247,0.3);">Sensor Fusion</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem; background: rgba(168,85,247,0.15); color: #c084fc; border-color: rgba(168,85,247,0.3);">SLAM</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Kalman Filter</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Epipolar Geometry</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Robotics</span>
+              <span class="tag-badge" style="font-size: 0.85rem; padding: 0.35rem 0.7rem;">Vision Transformers</span>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+            <h4
+              style="font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem;">
+              Languages</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+              English (Fluent) • German (A2) • French (A2)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="https://github.com/kshashankrao" target="_blank">GitHub</a>
+        <a href="https://greengnomie.wordpress.com" target="_blank">Archive Blog</a>
+        <a href="#home" onclick="window.location.hash='home'">Top ↑</a>
+      </div>
+      <p>&copy; 2026 Shashank Rao. Built with high-entropy mathematics, KaTeX, and clean code.</p>
+    </footer>
+
+  </div>
+
+  <!-- App Scripts -->
+  <script src="assets/js/canvas-grid.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>

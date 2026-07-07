@@ -1,0 +1,11 @@
+[
+  {
+    "id": "solving-equations-svd",
+    "date": "June 30, 2026",
+    "readTime": "4 min read",
+    "title": "Solving Linear & Non-Linear Equations using SVD",
+    "summary": "A mathematical dissection of Singular Value Decomposition (SVD). Learn how it solves linear regression via Moore-Penrose pseudoinverses and 3D LiDAR point cloud alignments (ICP) by selectively retaining or discarding scaling.",
+    "tags": ["3D", "Math", "Algorithms", "Python"],
+    "file": "blogs/solving-equations-svd.md"
+  }
+]
