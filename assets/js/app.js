@@ -184,7 +184,16 @@ document.addEventListener('DOMContentLoaded', () => {
           gfm: true,
           breaks: true
         });
-        contentArea.innerHTML = marked.parse(mdText);
+        const htmlContent = marked.parse(mdText);
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+        tempDiv.querySelectorAll('img').forEach(img => {
+          const src = img.getAttribute('src');
+          if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('blogs/')) {
+            img.setAttribute('src', 'blogs/' + src);
+          }
+        });
+        contentArea.innerHTML = tempDiv.innerHTML;
       } else {
         contentArea.innerHTML = `<pre>${mdText}</pre>`;
       }
