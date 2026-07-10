@@ -1,5 +1,14 @@
 [
   {
+    "id": "bevformer",
+    "date": "July 10, 2026",
+    "readTime": "3 min read",
+    "title": "BEVFormer: 3D Object Detection from Surround Cameras",
+    "summary": "An in-depth look at BEVFormer, a cutting-edge spatio-temporal transformer framework that projects multi-camera inputs into a unified Bird's Eye View (BEV) representation for 3D object detection.",
+    "tags": ["3D", "Autonomous Driving", "Deep Learning", "Transformers"],
+    "file": "blogs/bevformer.md"
+  },
+  {
     "id": "solving-equations-svd",
     "date": "June 30, 2026",
     "readTime": "4 min read",
