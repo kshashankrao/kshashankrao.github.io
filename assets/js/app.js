@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fetch Blog Index
   async function loadBlogIndex() {
     try {
-      const response = await fetch('blogs/blogs.json');
+      const response = await fetch('blogs/blogs.json', { cache: 'no-cache' });
       if (!response.ok) throw new Error('Failed to fetch blog index');
       allBlogs = await response.json();
       renderBlogCards(allBlogs);
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
-      const response = await fetch(blog.file);
+      const response = await fetch(blog.file, { cache: 'no-cache' });
       if (!response.ok) throw new Error('Failed to fetch markdown file');
       const mdText = await response.text();
 
@@ -184,9 +184,15 @@ document.addEventListener('DOMContentLoaded', () => {
           gfm: true,
           breaks: true
         });
-        // Collapse newlines inside display math $$...$$ so Marked (with breaks: true) doesn't insert <br> tags that break KaTeX text-node matching
-        const normalizedMd = mdText.replace(/\$\$\s*\r?\n([\s\S]*?)\r?\n\s*\$\$/g, (_, math) => `$$${math.trim()}$$`);
-        const htmlContent = marked.parse(normalizedMd);
+        // Protect display math ($$...$$) outside code blocks so Marked never inserts <br> or <em> inside LaTeX
+        const mathBlocks = [];
+        const protectedMd = mdText.replace(/```[\s\S]*?```|\$\$[\s\S]*?\$\$/g, (match) => {
+          if (match.startsWith('```')) return match;
+          const idx = mathBlocks.length;
+          mathBlocks.push(match);
+          return `@@MATH_BLOCK_${idx}@@`;
+        });
+        const htmlContent = marked.parse(protectedMd).replace(/@@MATH_BLOCK_(\d+)@@/g, (_, idx) => mathBlocks[Number(idx)]);
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlContent;
         tempDiv.querySelectorAll('img').forEach(img => {
