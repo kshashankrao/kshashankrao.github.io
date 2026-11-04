@@ -2,9 +2,7 @@
 
 In Transformer architectures, the core **Scaled Dot-Product Attention** mechanism computes the alignment between Query ($Q$) and Key ($K$) matrices to weight the Value ($V$) representations:
 
-$$
-\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \tag{1}
-$$
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \tag{1}$$
 
 A critical question arises when inspecting Equation (1): **Why do we divide the raw dot-product similarity $QK^T$ by $\sqrt{d_k}$, the square root of the embedding dimension?**
 
@@ -18,9 +16,7 @@ Assume that the components of a query vector $q \in \mathbb{R}^{d_k}$ and a key 
 
 The unscaled attention score between a single query and key is their dot product:
 
-$$
-s = q \cdot k = \sum_{i=1}^{d_k} q_i k_i
-$$
+$$s = q \cdot k = \sum_{i=1}^{d_k} q_i k_i$$
 
 Let's examine the mean and variance of each individual product term $q_i k_i$:
 * **Mean:** Since $q_i$ and $k_i$ are independent, $\mathbb{E}[q_i k_i] = \mathbb{E}[q_i]\mathbb{E}[k_i] = 0 \cdot 0 = 0$.
@@ -28,9 +24,7 @@ Let's examine the mean and variance of each individual product term $q_i k_i$:
 
 Because the dot product sums $d_k$ independent terms, the variance of the unscaled attention score grows **linearly** with the embedding dimension $d_k$:
 
-$$
-\text{Var}(q \cdot k) = \sum_{i=1}^{d_k} \text{Var}(q_i k_i) = d_k \quad \implies \quad \sigma = \sqrt{d_k}
-$$
+$$\text{Var}(q \cdot k) = \sum_{i=1}^{d_k} \text{Var}(q_i k_i) = d_k \quad \implies \quad \sigma = \sqrt{d_k}$$
 
 For a high-dimensional embedding such as $d_k = 512$, the variance of the unscaled scores jumps to $512$ (a standard deviation of $\sqrt{512} \approx 22.63$), producing extreme positive and negative logits.
 
@@ -40,9 +34,7 @@ For a high-dimensional embedding such as $d_k = 512$, the variance of the unscal
 
 The attention scores are passed directly into the $\text{softmax}$ function to produce a probability distribution over keys:
 
-$$
-\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{N} e^{z_j}}
-$$
+$$\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{N} e^{z_j}}$$
 
 Because $\text{softmax}$ exponentiates every input logit, large variance in $z$ has a severe compounding effect:
 1. **Probability Skew (One-Hot Saturation):** When logits have a wide spread ($\sigma = \sqrt{d_k}$), the largest score dominates the exponential sum. Consequently, the maximum token receives a probability close to $1.0$, while all other tokens collapse to $0.0$.
@@ -54,9 +46,7 @@ Because $\text{softmax}$ exponentiates every input logit, large variance in $z$ 
 
 To prevent the variance from scaling with $d_k$, we divide the dot product by $\sqrt{d_k}$. By the quadratic scaling property of variance, $\text{Var}(c X) = c^2 \text{Var}(X)$:
 
-$$
-\text{Var}\left(\frac{q \cdot k}{\sqrt{d_k}}\right) = \left(\frac{1}{\sqrt{d_k}}\right)^2 \text{Var}(q \cdot k) = \frac{1}{d_k} \cdot d_k = 1
-$$
+$$\text{Var}\left(\frac{q \cdot k}{\sqrt{d_k}}\right) = \left(\frac{1}{\sqrt{d_k}}\right)^2 \text{Var}(q \cdot k) = \frac{1}{d_k} \cdot d_k = 1$$
 
 > **💡 Key Takeaway:** Dividing by $\sqrt{d_k}$ locks the attention score variance strictly to **$\sigma^2 = 1$** regardless of how large the embedding dimension $d_k$ grows, ensuring well-distributed softmax probabilities and healthy gradient flow.
 

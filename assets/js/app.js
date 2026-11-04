@@ -184,7 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
           gfm: true,
           breaks: true
         });
-        const htmlContent = marked.parse(mdText);
+        // Collapse newlines inside display math $$...$$ so Marked (with breaks: true) doesn't insert <br> tags that break KaTeX text-node matching
+        const normalizedMd = mdText.replace(/\$\$\s*\r?\n([\s\S]*?)\r?\n\s*\$\$/g, (_, math) => `$$${math.trim()}$$`);
+        const htmlContent = marked.parse(normalizedMd);
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlContent;
         tempDiv.querySelectorAll('img').forEach(img => {
