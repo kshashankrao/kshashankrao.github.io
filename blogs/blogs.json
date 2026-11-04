@@ -1,5 +1,14 @@
 [
   {
+    "id": "attention-scaling",
+    "date": "November 5, 2026",
+    "readTime": "4 min read",
+    "title": "Why Normalize Attention by √d_k? Fixing Variance & Softmax Skew",
+    "summary": "A mathematical and empirical breakdown of why Scaled Dot-Product Attention divides by the square root of the embedding dimension to stabilize score variance and prevent softmax saturation.",
+    "tags": ["Deep Learning", "Transformers", "Math", "Python"],
+    "file": "blogs/attention-scaling.md"
+  },
+  {
     "id": "bevformer",
     "date": "July 10, 2026",
     "readTime": "3 min read",
